@@ -82,6 +82,7 @@ class GzipDisk(Disk):
         return value
 
 def getCache(base_dir, scope_str):
+    log.info('Cache dir is {}{}'.format(base_dir, scope_str))
     return FanoutCache(base_dir + scope_str,
                        disk=GzipDisk,
                        shards=64,
