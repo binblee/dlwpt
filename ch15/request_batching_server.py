@@ -141,8 +141,9 @@ async def image(request):
         # we don't want these to be logged...
         return sanic.response.text(e.handling_msg, status=e.handling_code)
 
-app.add_task(style_transfer_runner.model_runner())
-app.run(host="0.0.0.0", port=8000,debug=True)
+if __name__ == '__main__':
+    app.add_task(style_transfer_runner.model_runner())
+    app.run(host="0.0.0.0", port=8000,debug=True)
 
 # python -m ch15.request_batching_server data/p1ch2/horse2zebra_0.4.0.pth
 # curl -T data/p1ch2/horse.jpg http://localhost:8000/image --output /tmp/res.jpg
